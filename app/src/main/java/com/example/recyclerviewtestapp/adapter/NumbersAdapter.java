@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.recyclerviewtestapp.MainActivity;
 import com.example.recyclerviewtestapp.R;
 
 public class NumbersAdapter extends RecyclerView.Adapter<NumberViewHolder> {
@@ -16,8 +17,10 @@ public class NumbersAdapter extends RecyclerView.Adapter<NumberViewHolder> {
     private static int viewHolderCount;
     private NumberViewHolder viewHolder;
     private int numberItems;
+    private Context context;
 
-    public NumbersAdapter(int numberItems) {
+    public NumbersAdapter(int numberItems, MainActivity activity) {
+        this.context = activity;
         this.numberItems = numberItems;
         viewHolderCount = 0;
     }
@@ -31,8 +34,8 @@ public class NumbersAdapter extends RecyclerView.Adapter<NumberViewHolder> {
 
         View view = inflater.inflate(layoutIdForListItem, parent, false);
 
-        viewHolder = new NumberViewHolder(view);
-        viewHolder.viewHolderIndex.setText("ViewHolder index: " + viewHolderCount);
+        viewHolder = new NumberViewHolder(view, context);
+        viewHolder.getViewHolderIndex().setText("ViewHolder index: " + viewHolderCount);
         viewHolderCount++;
 
         return viewHolder;

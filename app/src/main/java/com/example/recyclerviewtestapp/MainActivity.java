@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager layerManager = new LinearLayoutManager(this);
         numberList.setLayoutManager(layerManager);
         numberList.setHasFixedSize(true);
-        numbersAdapter = new NumbersAdapter(30);
+        numbersAdapter = new NumbersAdapter(30, this);
 
         numberList.setAdapter(numbersAdapter);
 
